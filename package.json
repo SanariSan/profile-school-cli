@@ -1,0 +1,21 @@
+{
+  "name": "stream-dl",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "SanariSan <SanariSan@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node -r dotenv/config ./src/app.js",
+    "exe-win": "pkg -t node16-win ./src/app.js",
+    "exe-lin": "pkg -t node16-linux ./src/app.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ffmpeg": "^0.0.4",
+    "inquirer": "^8.2.0",
+    "isomorphic-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.35"
+  }
+}
