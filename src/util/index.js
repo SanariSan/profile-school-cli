@@ -1,1 +1,3 @@
-module.exports = require('./util');
+module.exports = {
+  ...require('./util'),
+};

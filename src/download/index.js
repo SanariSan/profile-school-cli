@@ -1,3 +1,3 @@
 module.exports = {
-  download: require('./download.js'),
+  ...require('./download.js'),
 };

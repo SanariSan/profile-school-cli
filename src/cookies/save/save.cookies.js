@@ -1,5 +1,5 @@
 const { writeFileSync } = require('fs');
-const { EPATH, EERROR_NAME } = require('../app.const');
+const { EPATH, EERROR_NAME } = require('../../app.const');
 
 function saveCookies({ signinCookies: cookies }) {
   try {

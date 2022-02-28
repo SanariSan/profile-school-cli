@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node -r dotenv/config ./src/app.js",
     "exe-win": "pkg -t node16-win ./src/app.js",
-    "exe-lin": "pkg -t node16-linux ./src/app.js"
+    "exe-lin": "pkg -t node16-linux ./src/app.js",
+    "format": "./node_modules/prettier/bin-prettier.js -w --config ./.prettierrc ."
   },
   "dependencies": {
     "dotenv": "^16.0.0",
@@ -16,6 +17,7 @@
     "isomorphic-fetch": "^3.0.0"
   },
   "devDependencies": {
-    "@types/isomorphic-fetch": "^0.0.35"
+    "@types/isomorphic-fetch": "^0.0.35",
+    "prettier": "^2.5.1"
   }
 }

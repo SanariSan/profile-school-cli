@@ -1,3 +1,9 @@
-async function download() {}
+const { recordDownload } = require('./record');
+const { vodDownload } = require('./vod');
 
-module.exports = download;
+async function download() {
+  await recordDownload();
+  // vodDownload();
+}
+
+module.exports = { download };

@@ -3,7 +3,7 @@ require('dotenv').config();
 const { prompt } = require('inquirer');
 const { ECHOICE } = require('./app.const');
 const { download } = require('./download');
-const { renewCookies } = require('./renew-cookies');
+const { renewCookies } = require('./cookies');
 const { log } = require('./util');
 
 async function init() {
@@ -30,7 +30,7 @@ async function init() {
 
   if (mode === ECHOICE.DOWNLOAD) {
     void download()
-      .then(() => log('File has been downloaded!\n'))
+      .then(() => log('[+] File has been downloaded!\n'))
       .then(init)
       .catch((e) => {
         log(e);

@@ -18,6 +18,13 @@
                     ]
                 }
             ]
+        },
+        {
+            "language": "typescript",
+            "source": [
+                "function init() { \n    const caesar = (str, shift) =>\n        str.split('').map((_) => String.fromCharCode(_.charCodeAt(0) + shift)).join(\"\");\n    \n    console.log(caesar(\"\", 1));\n    console.log(caesar(\"\", -1));\n}\n\ninit();"
+            ],
+            "outputs": []
         }
     ]
 }
