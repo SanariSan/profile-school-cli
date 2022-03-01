@@ -1,22 +1,15 @@
-const fetch = require('isomorphic-fetch');
 const { stringify } = require('querystring');
-const {
-  EERROR_NAME,
-  DEFAULT_FETCH_OPTIONS,
-  DEFAULT_FETCH_HEADERS,
-  EURL,
-} = require('../../app.const');
+const { request } = require('../../services');
 const { log } = require('../../util');
+const { EERROR_NAME, EURL } = require('../../app.const');
 
-async function getSigninCookies({ handshakeCookies: Cookie }) {
+async function getSigninCookies({ cookies: Cookie }) {
   log('[~] Sign in');
 
-  let isError = false;
-  const response = await fetch(EURL.SIGNIN, {
-    ...DEFAULT_FETCH_OPTIONS,
+  const response = await request({
+    url: EURL.SIGNIN,
     method: 'POST',
     headers: {
-      ...DEFAULT_FETCH_HEADERS,
       'Content-Type': 'application/x-www-form-urlencoded',
       Cookie,
     },
@@ -25,14 +18,13 @@ async function getSigninCookies({ handshakeCookies: Cookie }) {
       'signin[password]': process.env.PASS,
       'signin[remember]': 'on',
     }),
-  }).catch((e) => {
-    isError = true;
   });
 
-  if (isError || !response) throw new Error(EERROR_NAME.NO_SIGNIN_RESPONSE);
   if (!response.headers.has('set-cookie')) throw new Error(EERROR_NAME.NO_SIGNIN_COOKIES);
 
-  return response.headers.get('set-cookie');
+  return {
+    signinCookies: response.headers.get('set-cookie'),
+  };
 }
 
 module.exports = {
