@@ -1,10 +1,10 @@
 const { stringify } = require('querystring');
 const { request } = require('../../services');
-const { log } = require('../../util');
+const { debugLog } = require('../../util');
 const { EERROR_NAME, EURL } = require('../../app.const');
 
 async function getSigninCookies({ cookies: Cookie }) {
-  log('[~] Sign in');
+  debugLog('[~] Signing in');
 
   const response = await request({
     url: EURL.SIGNIN,

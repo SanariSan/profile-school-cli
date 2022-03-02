@@ -9,9 +9,9 @@ async function download() {
     type: 'list',
     message: `Choose mode`,
     choices: [
-      { name: 'Direct', value: ECHOICE.DIRECT },
-      { name: 'Navigate', value: ECHOICE.NAVIGATE },
-      { name: 'Main menu', value: ECHOICE.MAIN_MENU },
+      { name: '[#] Navigate', value: ECHOICE.NAVIGATE },
+      { name: '[#] Direct', value: ECHOICE.DIRECT },
+      { name: '[#] Main menu', value: ECHOICE.MAIN_MENU },
     ],
     name: 'value',
   });

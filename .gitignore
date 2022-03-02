@@ -5,4 +5,5 @@ cookies.txt
 *.mp4
 *.ts
 *.exe
+/app
 

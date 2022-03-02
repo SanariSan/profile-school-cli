@@ -1,12 +1,7 @@
 const { getAuthURL } = require('./get-auth-url.vod');
 const { getSessionCookiesURL } = require('./get-session-cookies-url.vod');
 const { getStreamURL } = require('./get-stream-url.vod');
-const {
-  clipSegments,
-  getStreamSegmentsNames,
-  getStreamSegmentsPath,
-  getStreamSegmentsRaw,
-} = require('../general-stream-logic');
+const { generalStreamDownloadProcess } = require('../general-stream-logic');
 
 async function vodDownload({ initialSourceUrl, cookies, outputName }) {
   // get auth url
@@ -21,24 +16,7 @@ async function vodDownload({ initialSourceUrl, cookies, outputName }) {
     cookies: sessionCookies,
   });
 
-  // get path for segments names grab
-  const { streamSegmentsPathBase, streamSegmentsPathSource } = await getStreamSegmentsPath({
-    url: `${streamUrlBase}/${streamPathIndex}`,
-  });
-
-  // get segments names
-  const { streamSegmentsNames } = await getStreamSegmentsNames({
-    url: `${streamUrlBase}/${streamSegmentsPathBase}/${streamSegmentsPathSource}`,
-  });
-
-  // get array of promises with segments and immediately go to the next step of clipping
-  const { segmentsRaw } = await getStreamSegmentsRaw({
-    url: `${streamUrlBase}/${streamSegmentsPathBase}`,
-    segments: streamSegmentsNames,
-  });
-
-  // clip segments as they being downloaded
-  await clipSegments({ segmentsRaw, outputName });
+  await generalStreamDownloadProcess({ streamUrlBase, streamPathIndex, outputName });
 }
 
 module.exports = { vodDownload };

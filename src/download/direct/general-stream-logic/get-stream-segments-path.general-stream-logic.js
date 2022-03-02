@@ -1,13 +1,13 @@
-const { log } = require('../../../util');
+const { debugLog } = require('../../../util');
 const { request } = require('../../../services');
 const { EERROR_NAME } = require('../../../app.const');
 
 async function getStreamSegmentsPath({ url }) {
-  log('[~] Get segments path');
+  debugLog('[~] Getting segments path');
 
   const response = await request({ url });
 
-  log('[~] Parse segments path');
+  debugLog('[~] Parsing segments path');
 
   const matchedPath = (await response.text()).match(/^[^#\s]+/m);
   if (matchedPath === null) throw new Error(EERROR_NAME.NO_STREAM_SEGMENTS_PATH);

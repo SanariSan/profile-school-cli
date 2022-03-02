@@ -13,13 +13,14 @@ const EPATH = makeEnum({
 });
 
 const ECHOICE = makeEnum({
-  MAIN_MENU: 0,
-  DIRECT: 1,
-  NAVIGATE: 2,
-  DOWNLOAD: 3,
-  RENEW_COOKIES: 4,
-  RECORD: 5,
-  VOD: 6,
+  EXIT: 0,
+  MAIN_MENU: 1,
+  DIRECT: 2,
+  NAVIGATE: 3,
+  DOWNLOAD: 4,
+  RENEW_COOKIES: 5,
+  RECORD: 6,
+  VOD: 7,
 });
 
 const EERROR_NAME = makeEnum({

@@ -1,9 +1,9 @@
 const { request } = require('../../../services');
-const { log } = require('../../../util');
+const { debugLog } = require('../../../util');
 const { EERROR_NAME } = require('../../../app.const');
 
 async function getResolvedSourceURL({ url, cookies: Cookie }) {
-  log('[~] Get resolved url');
+  debugLog('[~] Getting resolved url');
 
   const response = await request({
     url,

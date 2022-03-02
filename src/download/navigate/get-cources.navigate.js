@@ -1,9 +1,9 @@
 const { EURL } = require('../../app.const');
 const { request } = require('../../services');
-const { log } = require('../../util');
+const { debugLog } = require('../../util');
 
-async function navigateCources({ cookies: Cookie }) {
-  log('[~] Loading cources');
+async function getCources({ cookies: Cookie }) {
+  debugLog('[~] Getting cources');
 
   const response = await request({
     url: EURL.COURCES,
@@ -12,14 +12,14 @@ async function navigateCources({ cookies: Cookie }) {
     },
   });
 
-  log('[~] Parsing cources');
+  debugLog('[~] Parsing cources');
 
   // parse into inquirer list prompt format
   const body = await response.text();
   const cources = [
     ...body.matchAll(/(?:offers__title-inner">)(.+?)(?:<).+?(?:<\/div><a href=")(.+?)(?:")/g),
   ].map((match) => ({
-    name: match[1].replace(/&nbsp;/g, ' '),
+    name: `[*] ${match[1].replace(/&nbsp;/g, ' ')}`,
     value: match[2],
   }));
 
@@ -27,5 +27,5 @@ async function navigateCources({ cookies: Cookie }) {
 }
 
 module.exports = {
-  navigateCources,
+  getCources,
 };

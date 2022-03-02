@@ -8,9 +8,9 @@ async function promptMode({ mode }) {
     type: 'list',
     message: `Choose mode`,
     choices: [
-      { name: 'Record', value: ECHOICE.RECORD },
-      { name: 'VOD', value: ECHOICE.VOD },
-      { name: 'Main menu', value: ECHOICE.MAIN_MENU },
+      { name: '[#] Record', value: ECHOICE.RECORD },
+      { name: '[#] VOD', value: ECHOICE.VOD },
+      { name: '[#] Main menu', value: ECHOICE.MAIN_MENU },
     ],
     name: 'value',
   }));

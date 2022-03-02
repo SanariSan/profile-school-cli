@@ -1,9 +1,13 @@
-const { createWriteStream } = require('fs');
+const { createWriteStream, existsSync, mkdirSync } = require('fs');
 const { EPATH } = require('../../../app.const');
-const { log } = require('../../../util');
+const { debugLog } = require('../../../util');
 
 async function clipSegments({ segmentsRaw, outputName }) {
-  log('[~] Clipping segments when downloaded');
+  debugLog('[~] Clipping segments when downloaded');
+
+  if (!existsSync(EPATH.OUTPUT)) {
+    mkdirSync(EPATH.OUTPUT);
+  }
 
   const ws = createWriteStream(`${EPATH.OUTPUT}/${outputName}.ts`, {
     autoClose: false,
@@ -12,7 +16,7 @@ async function clipSegments({ segmentsRaw, outputName }) {
   let i = 1;
   for (let segmentRaw of segmentsRaw) {
     ws.write(await segmentRaw);
-    log(`[+] Clipped [#${i++}]`);
+    debugLog(`[+] Clipped [#${i++}]`);
   }
 
   ws.end();

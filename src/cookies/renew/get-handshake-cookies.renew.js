@@ -1,9 +1,9 @@
 const { request } = require('../../services');
 const { EERROR_NAME, EURL } = require('../../app.const');
-const { log } = require('../../util');
+const { debugLog } = require('../../util');
 
 async function getHandshakeCookies() {
-  log('[~] Handshake');
+  debugLog('[~] Handshake');
 
   const response = await request({ url: EURL.HANDSHAKE });
 
