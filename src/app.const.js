@@ -7,9 +7,11 @@ const ETIME_SEC = makeEnum({
   EIGHTH: 125,
 });
 
+const cwd = process.cwd();
+
 const EPATH = makeEnum({
-  COOKIES: `${process.env.PWD}/cookies.txt`,
-  OUTPUT: `${process.env.PWD}/out`,
+  COOKIES: `${cwd}/cookies.txt`,
+  OUTPUT: `${cwd}/out`,
 });
 
 const ECHOICE = makeEnum({

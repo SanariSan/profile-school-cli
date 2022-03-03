@@ -15,7 +15,7 @@ class ProgressTracker {
     this.currentDownloadedAmount = 0;
 
     this.bar = new ProgressBar(
-      `[:${this.currentSpinAnnotation}] Downloaded [:${this.currentDownloadedAnnotation}/${total}] # [:bar] :percent :etas`,
+      `[:${this.currentSpinAnnotation}] Downloading [:${this.currentDownloadedAnnotation}/${total}] # [:bar] :percent :etas`,
       {
         complete: '=',
         incomplete: '.',
