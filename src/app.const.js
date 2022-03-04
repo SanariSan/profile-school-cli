@@ -42,9 +42,9 @@ const EERROR_NAME = makeEnum({
 });
 
 // basic caesar obfuscation used on links to not get indexed by search engine
+// reverse with book.nnb if need raw links
 const EURL = makeEnum({
   HOST: caesar('iuuqt;00xxx/qspgjmftdippm/sv', -1),
-  HANDSHAKE: caesar('iuuqt;00xxx/qspgjmftdippm/sv', -1),
   SIGNIN: caesar('iuuqt;00xxx/qspgjmftdippm/sv0tfdvsf0tjhojo', -1),
   COURCES: caesar('iuuqt;00xxx/qspgjmftdippm/sv0nz0ijtupsz', -1),
   RECORD_DEFAULT: caesar('iuuqt;00xxx/qspgjmftdippm/sv0nz0mfttpo`wjefp0447', -1),

@@ -5,7 +5,7 @@ const { debugLog } = require('../../util');
 async function getHandshakeCookies() {
   debugLog('[~] Handshake');
 
-  const response = await request({ url: EURL.HANDSHAKE });
+  const response = await request({ url: EURL.HOST });
 
   if (!response.headers.has('set-cookie')) throw new Error(EERROR_NAME.NO_HANDSHAKE_COOKIES);
 
