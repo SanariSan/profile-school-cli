@@ -77,12 +77,16 @@ yarn exe-lin
 
 <b>In case of using binary:</b>
 
-Just launch binary you downloaded from releases page.
+- Launch binary you downloaded from releases page.
+- Choose `renew cookies` step to sign in and get session cookies
+- Enter `download` section 
 
 <b>In case of launching from bare code:</b>
 
 Run with
 
-```
-yarn start
-```
+- `yarn start`
+- Choose `renew cookies` step to sign in and get session cookies
+- Enter `download` section
+
+You don't need to renew cookies every time, but do not hesitate to do so once a week at least.
