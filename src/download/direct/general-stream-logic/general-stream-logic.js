@@ -1,4 +1,4 @@
-const { log } = require('../../../util');
+const { log, debugDir } = require('../../../util');
 const { clipSegments } = require('./clip-segments.general-stream-logic');
 const { getStreamSegmentsNames } = require('./get-stream-segments-names.general-stream-logic');
 const { getStreamSegmentsPath } = require('./get-stream-segments-path.general-stream-logic');
@@ -10,11 +10,13 @@ async function generalStreamDownloadProcess({ streamUrlBase, streamPathIndex, ou
   const { streamSegmentsPathBase, streamSegmentsPathSource } = await getStreamSegmentsPath({
     url: `${streamUrlBase}/${streamPathIndex}`,
   });
+  debugDir({ streamSegmentsPathBase, streamSegmentsPathSource });
 
   // get segments names
   const { streamSegmentsNames } = await getStreamSegmentsNames({
     url: `${streamUrlBase}/${streamSegmentsPathBase}/${streamSegmentsPathSource}`,
   });
+  debugDir({ streamSegmentsNames });
 
   log('');
   const progressTracker = new ProgressTracker({ total: streamSegmentsNames.length });
@@ -25,6 +27,7 @@ async function generalStreamDownloadProcess({ streamUrlBase, streamPathIndex, ou
     segments: streamSegmentsNames,
     progressTracker,
   });
+  debugDir({ segmentsRaw });
 
   // clip segments as they being downloaded
   await clipSegments({ segmentsRaw, outputName });

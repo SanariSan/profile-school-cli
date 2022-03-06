@@ -23,7 +23,9 @@ async function init() {
 
   if (mode === ECHOICE.RENEW_COOKIES) {
     void renewCookies()
-      .then(() => clearScreen())
+      .then(() => {
+        if (process.env.NODE_ENV === 'production') clearScreen();
+      })
       .then(() => log('[+] Cookies have been updated!'))
       .catch((e) => {
         handle(e);
@@ -34,11 +36,13 @@ async function init() {
   if (mode === ECHOICE.DOWNLOAD) {
     void download()
       .then(() => sleep(1000))
-      .then(() => clearScreen())
+      .then(() => {
+        if (process.env.NODE_ENV === 'production') clearScreen();
+      })
       .then(() => log('[+] File has been downloaded!'))
       .catch((e) => {
         if (e === ECHOICE.MAIN_MENU) {
-          clearScreen();
+          if (process.env.NODE_ENV === 'production') clearScreen();
           return;
         }
         handle(e);

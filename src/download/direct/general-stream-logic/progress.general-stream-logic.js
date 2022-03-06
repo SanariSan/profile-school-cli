@@ -4,18 +4,22 @@ class ProgressTracker {
   bar;
   spinSymbols;
   currentSpinAnnotation;
+  currentSentAnnotation;
+  currentSentAmount;
   currentDownloadedAnnotation;
   currentDownloadedAmount;
 
   constructor({ total }) {
     this.currentSpinAnnotation = 'spin';
+    this.currentSentAnnotation = 'st';
     this.currentDownloadedAnnotation = 'dl';
     this.spinSymbols = ['|', '/', '-', '\\'];
     this.spinState = 0;
+    this.currentSentAmount = 0;
     this.currentDownloadedAmount = 0;
 
     this.bar = new ProgressBar(
-      `[:${this.currentSpinAnnotation}] Downloading [:${this.currentDownloadedAnnotation}/${total}] # [:bar] :percent :etas`,
+      `[:${this.currentSpinAnnotation}] Downloading [:${this.currentDownloadedAnnotation}/:${this.currentSentAnnotation}/${total}] # [:bar] :percent :etas`,
       {
         complete: '=',
         incomplete: '.',
@@ -41,6 +45,11 @@ class ProgressTracker {
     let spinId = setTimeout(spin, 200);
   }
 
+  updateSent() {
+    this.currentSentAmount += 1;
+    this.tick({ step: 0 });
+  }
+
   updateDownloaded() {
     this.currentDownloadedAmount += 1;
     this.tick({ step: 1 });
@@ -49,6 +58,7 @@ class ProgressTracker {
   tick({ step }) {
     this.bar.tick(step, {
       [this.currentSpinAnnotation]: this.spinSymbols[this.spinState],
+      [this.currentSentAnnotation]: this.currentSentAmount,
       [this.currentDownloadedAnnotation]: this.currentDownloadedAmount,
     });
   }
