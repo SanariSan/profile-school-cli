@@ -17,9 +17,13 @@ async function getCources({ cookies: Cookie }) {
   // parse into inquirer list prompt format
   const body = await response.text();
   const cources = [
-    ...body.matchAll(/(?:offers__title-inner">)(.+?)(?:<).+?(?:<\/div><a href=")(.+?)(?:")/g),
+    ...body.matchAll(
+      /(?:offers__title-inner">)((?:.|\P{M}\p{M}*)+?)(?:<).+?(?:<\/div><a href=")(.+?)(?:")/gu,
+    ),
   ].map((match) => ({
-    name: `[*] ${match[1].replace(/&nbsp;/g, ' ')}`,
+    name: `[*] ${match[1]
+      .replace(/(&nbsp;)/g, ' ')
+      .replace(/(&amp;|&gt;|[^\w\d\sА-Яа-я-\.])/gu, '')}`,
     value: match[2],
   }));
 

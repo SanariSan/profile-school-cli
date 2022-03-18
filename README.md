@@ -6,6 +6,7 @@
 - [Examples](#examples)
 - [Getting Started](#getting_started)
 - [Usage](#usage)
+- [DOWNLOAD](https://github.com/SanariSan/profile-school-cli/releases)
 
 
 ## About <a name = "about"></a>
