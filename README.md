@@ -1,5 +1,7 @@
 # Profileschool cli
 
+Last tested on 27/08/2022, works fine
+
 ## Table of Contents
 
 - [About](#about)
@@ -23,6 +25,8 @@ The software is provided "AS IS", without warranty of any kind.</b>
 
 
 ## Examples <a name = "examples"></a>
+
+You can launch up to 4-5 concurrent download processes. Starting more causing fragments drops in every instance.
 
 <b>Download video using navigation mode</b>
 

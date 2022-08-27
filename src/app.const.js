@@ -1,13 +1,5 @@
 const { caesar, makeEnum } = require('./util');
 
-const ETIME_SEC = makeEnum({
-  ONE: 1000,
-  QUARTER_TO: 750,
-  HALF: 500,
-  QUARTER: 250,
-  EIGHTH: 125,
-});
-
 const cwd = process.cwd();
 
 const EPATH = makeEnum({
@@ -66,7 +58,6 @@ const DEFAULT_FETCH_OPTIONS = {
 };
 
 module.exports = {
-  ETIME_SEC,
   EPATH,
   ECHOICE,
   EERROR_NAME,

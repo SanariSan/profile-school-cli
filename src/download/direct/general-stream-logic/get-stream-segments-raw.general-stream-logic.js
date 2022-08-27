@@ -1,6 +1,5 @@
 const { debugLog, sleep, rndInRange } = require('../../../util');
 const { request } = require('../../../services');
-const { ETIME_SEC } = require('../../../app.const');
 
 async function getStreamSegmentRaw({ url, segment, progressTracker }) {
   debugLog(`[~] Getting segment [${segment}]`);
@@ -22,7 +21,7 @@ async function getStreamSegmentsRaw({ url, segments, progressTracker }) {
   // send requests with a little delay to not get blocked
   let delayAccumulator = 0;
   const segmentsRaw = segments.map((segment) =>
-    sleep((delayAccumulator += rndInRange(0.5, 1.5) * ETIME_SEC.ONE)).then(() =>
+    sleep((delayAccumulator += rndInRange(0.5, 1.5) * 1000)).then(() =>
       getStreamSegmentRaw({ url, segment, progressTracker }),
     ),
   );
