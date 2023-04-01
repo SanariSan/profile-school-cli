@@ -1,6 +1,8 @@
 # Profileschool cli
 
-Last tested on 27/08/2022, works fine
+~~Last tested on 27/08/2022, works fine~~
+
+Seems like devs reworked auth+sec so now it's broken :(
 
 ## Table of Contents
 
